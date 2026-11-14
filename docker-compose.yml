@@ -1,0 +1,16 @@
+services:
+  minecraft:
+    build:
+      context: .
+      args:
+        JAVA_VERSION: ${JAVA_VERSION:-21}
+    container_name: minecraft-modded
+    restart: unless-stopped
+    ports:
+      - "25565:25565"
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/server
